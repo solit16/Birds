@@ -40,6 +40,12 @@ public class Bird {
             return;
         }
 
+        Random rand = new Random();
+        int r = rand.nextInt(255);
+        int g = rand.nextInt(255);
+        int b = rand.nextInt(255);
+        this.color = new Color(r, g, b);
+
         System.out.println("Появился " + this.name + " c возрастом " + this.age);
     }
 
@@ -66,5 +72,9 @@ public class Bird {
     }
     public void drink(int drinkCount) {
         System.out.println("["+this.name+"|"+this.gender+"] Я "+this.name+"выпил"+drinkCount);
+    }
+
+    public void draw(Graphics2D g2d){
+        g2d.fillOval(100,100,50,50);
     }
 }
