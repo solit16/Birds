@@ -6,10 +6,10 @@ public class MyFrame extends JPanel {
     Graphics2D g2d;
 
     public void paint(Graphics g){
-        Flamingo f = new Flamingo("123");
+        GroupBird gb = new GroupBird(1, 10);
         this.g = g;
         this.g2d = (Graphics2D) g;
-        f.draw(g2d);
+        gb.draw(g2d);
     }
 
     public Graphics2D getG2d(){
