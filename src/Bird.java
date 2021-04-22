@@ -2,12 +2,12 @@ import java.awt.*;
 import java.util.Random;
 
 public class Bird {
+    int x, y;
     String name;
     int age;
     char gender;
     int food;
     Color color;
-
 
     Bird(String name) {
         this.name = name;
@@ -26,8 +26,6 @@ public class Bird {
         this.color = new Color(r, g, b);
 
         this.food = 0;
-
-        System.out.println("Родился " + this.gender + " c именем " + this.name);
     }
 
     Bird(String name, char gender, int age) {
@@ -57,6 +55,11 @@ public class Bird {
         this.gender = gender;
     }
 
+    public void setXY(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public void fly(){
         System.out.println("["+this.name+"|"+this.gender+"] Я лечу");
     }
@@ -75,6 +78,6 @@ public class Bird {
     }
 
     public void draw(Graphics2D g2d){
-        g2d.fillOval(100,100,50,50);
+        g2d.fillOval(this.x,this.y,20,20);
     }
 }
