@@ -16,15 +16,19 @@ public class GroupBird {
         this.y = r_start + (int)(Math.random()*(r_end - r_start));
 
         for (int i = 0; i < count; i ++){
+            int x, y, r = this.r - 10;
+            x = -r + (int)(Math.random()*(2*r));
+            int t = (int)Math.sqrt(r * r - x * x);
+            y = -t + (int)(Math.random()*(2*t));
             if(typeBird == 1){
                 Parrot p = new Parrot("Вася"+ i );
-                int x, y, r = this.r - 10;
-                x = -r + (int)(Math.random()*(2*r));
-                int t = (int)Math.sqrt(r * r - x * x);
-                y = -t + (int)(Math.random()*(2*t));
                 p.setXY(x + this.x, y + this.y);
                 birds.add(p);
-
+            }
+            else if (typeBird == 2){
+                Flamingo f = new Flamingo("Нафанаил"+i);
+                f.setXY(this.x + x, this.y + y);
+                birds.add(f);
             }
         }
     }

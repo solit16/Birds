@@ -10,6 +10,8 @@ public class MyFrame extends JPanel {
         this.g = g;
         this.g2d = (Graphics2D) g;
         gb.draw(g2d);
+        GroupBird gb2 = new GroupBird(2, 10);
+        gb2.draw(g2d);
     }
 
     public Graphics2D getG2d(){
