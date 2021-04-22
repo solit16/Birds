@@ -19,5 +19,10 @@ public class Parrot extends Bird{
     public void draw(Graphics2D g2d) {
         g2d.setColor(this.color);
         g2d.fillOval(this.x- this.r,this.y - this.r,this.r*2,this.r*2);
+        int x2, y2;
+        x2 = (int)(this.r*Math.cos(angle*Math.PI/180.0));
+        y2 = (int)(this.r*Math.sin(angle*Math.PI/180.0));
+        g2d.setColor(Color.BLACK);
+        g2d.drawLine(this.x, this.y, x + x2, y - y2);
     }
 }

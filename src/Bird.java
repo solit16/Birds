@@ -8,6 +8,7 @@ public class Bird {
     char gender;
     int food;
     Color color;
+    int angle;
 
     Bird(String name) {
         this.name = name;
@@ -23,8 +24,8 @@ public class Bird {
         int r = rand.nextInt(255);
         int g = rand.nextInt(255);
         int b = rand.nextInt(255);
+        this.angle = rand.nextInt(360);
         this.color = new Color(r, g, b);
-
         this.food = 0;
     }
 
@@ -80,4 +81,5 @@ public class Bird {
     public void draw(Graphics2D g2d){
         g2d.fillOval(this.x,this.y,20,20);
     }
+
 }

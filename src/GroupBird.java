@@ -24,6 +24,7 @@ public class GroupBird {
                 y = -t + (int)(Math.random()*(2*t));
                 p.setXY(x + this.x, y + this.y);
                 birds.add(p);
+
             }
         }
     }
