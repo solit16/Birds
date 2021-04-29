@@ -43,6 +43,6 @@ public class Parrot extends Bird{
         x2 = (int)(this.r*Math.cos(angle*Math.PI/180.0));
         y2 = (int)(this.r*Math.sin(angle*Math.PI/180.0));
         g2d.setColor(Color.BLACK);
-        g2d.drawLine(x, y, x + x2, y - y2);
+        g2d.drawLine(x, y, x + x2, y + y2);
     }
 }

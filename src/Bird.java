@@ -82,7 +82,24 @@ public class Bird {
         g2d.fillOval(this.x,this.y,20,20);
     }
     public void draw(Graphics2D g2d, int group_x, int group_y) {
-
+    }
+    public void move(int d, int r){
+        if (Math.sqrt(this.x*this.x+this.y*this.y) > r){
+            angle = angle + 180;
+            if (angle > 360) {
+                angle -= 360;
+            }
+        }
+        int dx = (int)(d*Math.cos(angle*Math.PI/180.0));
+        int dy = (int)(d*Math.sin(angle*Math.PI/180.0));
+        this.x += dx;
+        this.y += dy;
+        System.out.println(angle);
+        if (Math.random() > 0.5) {
+            angle += 5;
+        } else {
+            angle -= 5;
+        }
     }
 
 }

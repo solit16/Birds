@@ -15,8 +15,9 @@ public class Main {
         frame.setVisible(true);
         while(true) {
             f.gb.move(3);
+            f.gb2.move(3);
             frame.repaint();
-            Thread.sleep(100);
+            Thread.sleep(30);
         }
 
 

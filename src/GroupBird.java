@@ -18,6 +18,8 @@ public class GroupBird {
         this.x = r_start + (int)(Math.random()*(r_end - r_start));
         this.y = r_start + (int)(Math.random()*(r_end - r_start));
 
+
+
         for (int i = 0; i < count; i ++){
             int x, y, r = this.r - 10;
             x = -r + (int)(Math.random()*(2*r));
@@ -60,5 +62,14 @@ public class GroupBird {
                 angle -= 360;
             }
         }
+        for(int i = 0; i < birds.size(); i++){
+            this.birds.get(i).move(2, this.r);
+        }
+        if (Math.random() > 0.5) {
+            angle += 2;
+        } else {
+            angle -= 2;
+        }
+
     }
 }
