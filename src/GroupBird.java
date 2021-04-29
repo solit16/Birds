@@ -35,10 +35,14 @@ public class GroupBird {
 
 
     public void draw(Graphics2D g2d){
-        g2d.setColor(new Color(200, 191, 231));
+        g2d.setColor(new Color(200, 191, 231, 51));
         g2d.fillOval(this.x- this.r,this.y - this.r,this.r*2,this.r*2);
         for(int i = 0; i < this.birds.size(); i++){
             this.birds.get(i).draw(g2d);
         }
+    }
+    public void move(int dx, int dy) {
+        this.x += dx;
+        this.y += dy;
     }
 }
