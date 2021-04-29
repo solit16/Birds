@@ -81,5 +81,8 @@ public class Bird {
     public void draw(Graphics2D g2d){
         g2d.fillOval(this.x,this.y,20,20);
     }
+    public void draw(Graphics2D g2d, int group_x, int group_y) {
+
+    }
 
 }

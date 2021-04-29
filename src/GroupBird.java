@@ -1,15 +1,18 @@
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GroupBird {
 
     ArrayList<Bird> birds;
     int x, y;
     int r = 100;
+    int angle;
 
     GroupBird(int typeBird, int count){
+        Random rand = new Random();
         this.birds = new ArrayList<Bird>();
-
+        this.angle = rand.nextInt(360);
         int r_start = 100;
         int r_end = 400;
         this.x = r_start + (int)(Math.random()*(r_end - r_start));
@@ -22,7 +25,7 @@ public class GroupBird {
             y = -t + (int)(Math.random()*(2*t));
             if(typeBird == 1){
                 Parrot p = new Parrot("Вася"+ i );
-                p.setXY(x + this.x, y + this.y);
+                p.setXY(x, y);
                 birds.add(p);
             }
             else if (typeBird == 2){
@@ -38,11 +41,24 @@ public class GroupBird {
         g2d.setColor(new Color(200, 191, 231, 51));
         g2d.fillOval(this.x- this.r,this.y - this.r,this.r*2,this.r*2);
         for(int i = 0; i < this.birds.size(); i++){
-            this.birds.get(i).draw(g2d);
+            this.birds.get(i).draw(g2d, this.x, this.y);
         }
     }
-    public void move(int dx, int dy) {
-        this.x += dx;
-        this.y += dy;
+    public void move(int d) {
+        if (this.x < 400 && this.x > 100 && this.y < 400 && this.y > 100) {
+            int dx = (int)(d*Math.cos(angle*Math.PI/180.0));
+            int dy = (int)(d*Math.sin(angle*Math.PI/180.0));
+            this.x += dx;
+            this.y += dy;
+        } else {
+            angle = angle + 180;
+            int dx = (int)(d*Math.cos(angle*Math.PI/180.0));
+            int dy = (int)(d*Math.sin(angle*Math.PI/180.0));
+            this.x += dx;
+            this.y += dy;
+            if (angle > 360) {
+                angle -= 360;
+            }
+        }
     }
 }

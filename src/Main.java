@@ -14,7 +14,7 @@ public class Main {
         frame.setResizable(false);
         frame.setVisible(true);
         while(true) {
-            f.gb.move(1,1);
+            f.gb.move(3);
             frame.repaint();
             Thread.sleep(100);
         }
