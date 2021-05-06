@@ -6,7 +6,7 @@ public class GroupBird {
 
     ArrayList<Bird> birds;
     int x, y;
-    int r = 100;
+    int r = 200;
     int angle;
 
     GroupBird(int typeBird, int count){
@@ -71,5 +71,37 @@ public class GroupBird {
             angle -= 2;
         }
 
+    }
+    public void ageUp() {
+        for(int i = 0; i < birds.size(); i++){
+            boolean kill = this.birds.get(i).ageUp();
+            if (kill == false){
+                this.birds.remove(i);
+//                Parrot p = new Parrot("Вася"+ i );
+//                p.setXY(0, 0);
+//                birds.add(p);
+                break;
+            }
+
+        }
+    }
+    public void populationUp() {
+        for(int i = 0; i < birds.size() - 1; i++){
+            for(int j = i + 1; j < birds.size(); j++){
+                Bird b1 = birds.get(i);
+                Bird b2 = birds.get(j);
+                if (b1.gender != b2.gender && b1.populationSkip > 20 && b2.populationSkip > 20) {
+                    double s = Math.sqrt((b2.x - b1.x) * (b2.x - b1.x) + (b2.y - b1.y) * (b2.y - b1.y));
+                    if ((int) s <= 2 * r) {
+                        Parrot p = new Parrot("Вася" + i);
+                        p.setXY(b1.x, b1.y);
+                        birds.add(p);
+                        b1.populationSkip = 0;
+                        b2.populationSkip = 0;
+                        return;
+                    }
+                }
+            }
+        }
     }
 }

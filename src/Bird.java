@@ -9,18 +9,21 @@ public class Bird {
     int food;
     Color color;
     int angle;
+    private int ageSkip;
+    int populationSkip;
+
 
     Bird(String name) {
+        Random rand = new Random();
         this.name = name;
-        this.age = 0;
-
+        this.age = rand.nextInt(50);
+        this.populationSkip = rand.nextInt(20);
         double randomGender = Math.random();
         if(randomGender < 0.5){
             this.gender = 'f';
         } else {
             this.gender = 'm';
         }
-        Random rand = new Random();
         int r = rand.nextInt(255);
         int g = rand.nextInt(255);
         int b = rand.nextInt(255);
@@ -85,7 +88,7 @@ public class Bird {
     }
     public void move(int d, int r){
         if (Math.sqrt(this.x*this.x+this.y*this.y) > r){
-            angle = angle + 180;
+            angle = angle + 2*angle;
             if (angle > 360) {
                 angle -= 360;
             }
@@ -94,12 +97,26 @@ public class Bird {
         int dy = (int)(d*Math.sin(angle*Math.PI/180.0));
         this.x += dx;
         this.y += dy;
-        System.out.println(angle);
         if (Math.random() > 0.5) {
             angle += 5;
         } else {
             angle -= 5;
         }
+    }
+    public boolean ageUp() {
+        Random rand = new Random();
+        ageSkip++;
+        if (ageSkip > 10) {
+            ageSkip = 0;
+            age++;
+            populationSkip++;
+            int killRand = rand.nextInt(100);
+            killRand += 100;
+            if (killRand < this.age) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
